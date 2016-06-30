@@ -30,7 +30,7 @@ fi
 if [ -d $BACKUP_SERVERDIR ]; then
 	if [ $BACKUP_TYPE == 1 ]
 		then
-			rsync --rsync-path="sudo rsync" -acrpzbe "ssh -i /path/to/ssh_private_key -p 22" autobackup@127.0.0.1:$BACKUP_DIR $BACKUP_FINALDIR --backup-dir=$BACKUP_FINALDIR --link-dest=$BACKUP_ORIGINDIR
+			rsync --rsync-path="sudo rsync" -arpzbe "ssh -i /path/to/ssh_private_key -p 22" autobackup@127.0.0.1:$BACKUP_DIR $BACKUP_FINALDIR --backup-dir=$BACKUP_FINALDIR
 			echo "Full-Backup successfully stored in $BACKUP_FINALDIR"
 		else
 			rsync --rsync-path="sudo rsync" -acrpzbe "ssh -i /path/to/ssh_private_key -p 22" autobackup@127.0.0.1:$BACKUP_DIR $BACKUP_FINALDIR --backup-dir=$BACKUP_FINALDIR --link-dest=$BACKUP_ORIGINDIR
