@@ -8,7 +8,7 @@ DATE_DAY=`date +%d`
 DATE_YEARMONTH=`date +%Y-%m`
 
 # get backup type (full or incremental)
-if [ "$DATE_DAY" == "1" ]
+if [ "$DATE_DAY" == "01" ]
 	then
 		BACKUP_TYPE=1
 		BACKUP_FINALDIR=$BACKUP_SERVERDIR"/full_"$DATE
