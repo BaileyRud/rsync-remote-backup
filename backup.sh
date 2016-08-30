@@ -12,44 +12,10 @@ if [ "$DATE_DAY" == "01" ]
 	then
 		BACKUP_TYPE=1
 		BACKUP_FINALDIR=$BACKUP_SERVERDIR"/full_"$DATE
-	elif [ "$DATE_DAY" == "08" ]
-	then
-		BACKUP_TYPE=1
-		BACKUP_FINALDIR=$BACKUP_SERVERDIR"/full_"$DATE
-	elif [ "$DATE_DAY" == "15" ]
-	then
-                BACKUP_TYPE=1
-                BACKUP_FINALDIR=$BACKUP_SERVERDIR"/full_"$DATE
-	elif [ "$DATE_DAY" == "22" ]
-	then
-                BACKUP_TYPE=1
-                BACKUP_FINALDIR=$BACKUP_SERVERDIR"/full_"$DATE
 	else
 		BACKUP_TYPE=2
 		BACKUP_FINALDIR=$BACKUP_SERVERDIR"/incr_"$DATE
 		BACKUP_ORIGINDIR=$BACKUP_SERVERDIR"/full_"$DATE_YEARMONTH"-01"
-
-		# get latest full-backup of this month
-		if [ $DATE_DAY -ge 22 ]
-			then
-				BACKUP_TYPE=2
-				BACKUP_FINALDIR=$BACKUP_SERVERDIR"/incr_"$DATE
-				BACKUP_ORIGINDIR=$BACKUP_SERVERDIR"/full_"$DATE_YEARMONTH"-22"
-			elif [ $DATE_DAY -ge 15 ]
-			then
-				BACKUP_TYPE=2
-				BACKUP_FINALDIR=$BACKUP_SERVERDIR"/incr_"$DATE
-				BACKUP_ORIGINDIR=$BACKUP_SERVERDIR"/full_"$DATE_YEARMONTH"-15"
-			elif [ $DATE_DAY -ge 08 ]
-			then
-                                BACKUP_TYPE=2
-                                BACKUP_FINALDIR=$BACKUP_SERVERDIR"/incr_"$DATE
-                                BACKUP_ORIGINDIR=$BACKUP_SERVERDIR"/full_"$DATE_YEARMONTH"-08"
-			else
-                                BACKUP_TYPE=2
-                                BACKUP_FINALDIR=$BACKUP_SERVERDIR"/incr_"$DATE
-                                BACKUP_ORIGINDIR=$BACKUP_SERVERDIR"/full_"$DATE_YEARMONTH"-01"
-		fi
 
 		# fallback if no full-backup exists
 		if [ ! -d "$BACKUP_ORIGINDIR" ]; then
